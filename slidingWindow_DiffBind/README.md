@@ -18,8 +18,11 @@ SON_TREATMENTrep1,IMR90,SON,treatment,1,SON_treatment_rep1.bam,INPUT_TREATMENT_r
 SON_TREATMENTrep2,IMR90,SON,treatment,2,SON_treatment_rep2.bam,INPUT_TREATMENT_rep2,INPUT_treatment_rep2.bam
 SON_TREATMENTrep3,IMR90,SON,treatment,3,SON_treatment_rep3.bam,INPUT_TREATMENT_rep3,INPUT_treatment_rep3.bam
 ```
+The Diff Bind template should be named "diffBindTemplate.txt"
+
 #### Generarte sample sheets
-From diffBindTemplatetxt, create one sample sheet for each sliding window bed file from "create sliding windows"
+From diffBindTemplate.txt, create one sample sheet for each sliding window bed file from "create sliding windows"
 ```
 for file in bins_50000_*.bed; do ./runMakeDiffBindFile.sh $file; done
 ```
+This will create 9 DiffBind sample sheets, one for each sliding window, called diffBind_bins_50000_[1-9].bed
