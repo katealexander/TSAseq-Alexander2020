@@ -1,4 +1,5 @@
 # Create sliding windows
+
 ```
-This is the usage
+python getGenomeBins.py hg19.chrom.sizes 50000
 ```
