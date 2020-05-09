@@ -4,7 +4,7 @@ This pipeline was used for differential analysis of SON TSA-seq data upon p53 ac
 # Requirements
 R packages: DiffBind,  
 bedtools (https://bedtools.readthedocs.io/en/latest/content/installation.html)  
-Written in Python 2.7  
+Python 2.7  
 
 # Data preparation
 From demultiplexed fastq files, paired-end sequencing data was:  
