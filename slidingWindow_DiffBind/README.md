@@ -28,3 +28,12 @@ for file in bins_50000_*.bed; do ./runMakeDiffBindFile.sh $file; done
 This will create 9 DiffBind sample sheets, one for each sliding window, called diffBind_bins_50000_[1-9].txt
 
 # Run DiffBind
+# Get average counts for genes
+The following extracts the average counts of all bins that contain the TSS 
+##### For a list of genes of interest
+```
+python addAverageCountsToGene.py DNAfishGenes.txt hg19_TSS.txt SON[1-9]_25kbcounts.txt > geneListAverageCounts.txt
+```
+##### For the whole genome
+```
+```
