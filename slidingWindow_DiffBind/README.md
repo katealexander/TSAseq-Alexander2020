@@ -20,7 +20,7 @@ SON_TREATMENTrep3,IMR90,SON,treatment,3,SON_treatment_rep3.bam,INPUT_TREATMENT_r
 ```
 The Diff Bind template should be named "diffBindTemplate.txt"
 
-#### Generarte sample sheets
+#### Generate sample sheets
 From diffBindTemplate.txt, create one sample sheet for each sliding window bed file from "create sliding windows"
 ```
 for file in bins_50000_*.bed; do ./runMakeDiffBindFile.sh $file; done
@@ -28,8 +28,15 @@ for file in bins_50000_*.bed; do ./runMakeDiffBindFile.sh $file; done
 This will create 9 DiffBind sample sheets, one for each sliding window, called diffBind_bins_50000_[1-9].txt
 
 # Run DiffBind
+This will output two files for each of the 9 bed files. A counts file () that contains the normalized counts for each sample within each bin, and a DiffBind results file () that contains the concentrations and statistics for the control and treatment of each bin. 
 # Extract differential domains and merge
-The DiffBind output extracted
+The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file.
+#### Extract significant bins
+```
+```
+#### Sort and merge
+```
+```
 # Get average counts for genes
 The following extracts the average counts of all bins that contain the TSS. These python scripts are designed for datasets with 6 samples in DiffBind (3 control and 3 treatment). For more or fewer datasets, these two scripts will need to be edited as indicated within the files.
 #### For a list of genes of interest
