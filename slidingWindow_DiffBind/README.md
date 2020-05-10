@@ -33,9 +33,17 @@ This will output two files for each of the 9 bed files. A counts file () that co
 The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file. Because SON TSA-seq data is less reliable at higher distances to the speckle (lower SON signals), this script eliminates bins that have SON concentrations below a certian threshold. This threshold be edited within the script.
 #### Extract significant bins
 ```
+for file in SON[1-9]_DiffBindResults_50kb.txt; do python ../analysisUtilities/extractNutlinUpSignificant.py $file >> significant_upNutlin_50kb.bed; done
+
+for file in SON[1-9]_DiffBindResults_50kb.txt; do python ../analysisUtilities/extractNutlinDownSignificant.py $file >> significant_downNutlin_50kb.bed; done
 ```
 #### Sort and merge
 ```
+bedtools sort -i significant_upNutlin_50kb.bed > significant_upNutlin_sorted_50kb.bed
+bedtools sort -i significant_downNutlin_50kb.bed > significant_downNutlin_sorted_50kb.bed 
+
+bedtools merge -i significant_upNutlin_sorted_50kb.bed > significant_upNutlin_merged_50kb.bed
+bedtools merge -i significant_downNutlin_sorted_50kb.bed > significant_downNutlin_merged_50kb.bed
 ```
 # Get average counts for genes
 The following extracts the average counts of all bins that contain the TSS. These python scripts are designed for datasets with 6 samples in DiffBind (3 control and 3 treatment). For more or fewer datasets, these two scripts will need to be edited as indicated within the files.
