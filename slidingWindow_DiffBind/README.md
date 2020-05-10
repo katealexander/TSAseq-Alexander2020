@@ -47,6 +47,9 @@ bedtools merge -i significant_downNutlin_sorted_50kb.bed > significant_downNutli
 ```
 # Get list of genes within significant domains
 This gene list can then be compared to expression data to evaluate whether genes that change SON signal are enriched for genes that change expression levels.
+```
+python getGenesWithin.py hg19_TSS.txt significant_upNutlin_merged.bed > significant_upNutlin_merged_genes.txt
+```
 # Get average counts for genes
 The following extracts the average counts of all bins that contain the TSS. These python scripts are designed for datasets with 6 samples in DiffBind (3 control and 3 treatment). For more or fewer datasets, these two scripts will need to be edited as indicated within the files.
 #### For a list of genes of interest
