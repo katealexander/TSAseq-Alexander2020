@@ -32,11 +32,11 @@ This will create 9 DiffBind sample sheets, one for each sliding window, called d
 The DiffBind output extracted
 # Get average counts for genes
 The following extracts the average counts of all bins that contain the TSS. These python scripts are designed for datasets with 6 samples in DiffBind (3 control and 3 treatment). For more or fewer datasets, these two scripts will need to be edited as indicated within the files.
-##### For a list of genes of interest
+#### For a list of genes of interest
 ```
 python addAverageCountsToGene.py DNAfishGenes.txt hg19_TSS.txt SON[1-9]_50kbcounts.txt > geneListAverageCounts_50kb.txt
 ```
-##### For all genes in the genome
+#### For all genes in the genome
 ```
-python addAverageCountsToAllGenes.py hg19_TSS.txt SON[1-9]_divide_50kbcounts.txt > allGenes_divideCounts50kb.txt
+python addAverageCountsToAllGenes.py hg19_TSS.txt SON[1-9]_50kbcounts.txt > allGenesCounts_50kb.txt
 ```
