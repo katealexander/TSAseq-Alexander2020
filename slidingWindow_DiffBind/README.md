@@ -25,6 +25,6 @@ From diffBindTemplate.txt, create one sample sheet for each sliding window bed f
 ```
 for file in bins_50000_*.bed; do ./runMakeDiffBindFile.sh $file; done
 ```
-This will create 9 DiffBind sample sheets, one for each sliding window, called diffBind_bins_50000_[1-9].bed
+This will create 9 DiffBind sample sheets, one for each sliding window, called diffBind_bins_50000_[1-9].txt
 
 # Run DiffBind
