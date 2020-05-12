@@ -35,7 +35,7 @@ One thing to be wary about with SON TSA-seq is if your experimental perturbation
 ```
 bedtools intersect -v -abam file.bam -b IMR90_ATAC_peaks_merged.bed > file_filtered.bam
 ```
-or for all files at once
+#### Or for all files at once
 ```
 for file in *.bam; do bedtools intersect -v -abam $file -b IMR90_ATAC_peaks_merged.bed > ${file//.bam/_filtered.bam}; done
 ```
