@@ -37,7 +37,7 @@ bedtools intersect -abam file.bam -b IMR90_ATAC_peaks_merged.bed > file_filtered
 ```
 or for all files at once
 ```
-for file in *.bam; do bedtools intersect -abam $file -b IMR90_ATAC_peaks_merged.bed > ${file//.bam/_filtered.bam; done
+for file in *.bam; do bedtools intersect -abam $file -b IMR90_ATAC_peaks_merged.bed > ${file//.bam/_filtered.bam}; done
 ```
 With the filtered bam file, re-run DiffBind as above.
 # Extract differential domains and merge
