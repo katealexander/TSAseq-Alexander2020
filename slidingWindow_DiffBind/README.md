@@ -34,6 +34,7 @@ One thing to be wary about with SON TSA-seq is if your experimental perturbation
 ```
 bedtools intersect -abam file.bam -b filter.bed > filtered.bam
 ```
+With the filtered bam file, re-run DiffBind as above.
 # Extract differential domains and merge
 The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file. Because SON TSA-seq data is less reliable at higher distances to the speckle (lower SON signals), this script eliminates bins that have SON concentrations below a certian threshold. This threshold be edited within the script.
 #### Extract significant bins
