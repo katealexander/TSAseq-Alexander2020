@@ -39,7 +39,7 @@ or for all files at once
 ```
 for file in *.bam; do bedtools intersect -abam $file -b IMR90_ATAC_peaks_merged.bed > ${file//.bam/_filtered.bam}; done
 ```
-With the filtered bam file, re-run DiffBind as above.
+With the filtered bam file, re-run DiffBind as above. You will need to make a new "diffBindTemplate.txt" file reflecting the names of the filtered bam files. WARNING: This will overwrite the previously done DiffBind analysis if done in the same directory!
 # Extract differential domains and merge
 The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file. Because SON TSA-seq data is less reliable at higher distances to the speckle (lower SON signals), this script eliminates bins that have SON concentrations below a certian threshold. This threshold be edited within the script.
 #### Extract significant bins
