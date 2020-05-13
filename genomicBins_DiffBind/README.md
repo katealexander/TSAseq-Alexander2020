@@ -29,17 +29,7 @@ This will create 9 DiffBind sample sheets, one for each sliding window, called d
 
 # Run DiffBind
 This will output two files for each of the 9 bed files. A counts file () that contains the normalized counts for each sample within each bin, and a DiffBind results file () that contains the concentrations and statistics for the control and treatment of each bin. 
-## Check the effect of open chromatin
-One thing to be wary about with SON TSA-seq is if your experimental perturbation influences chromatin accessibility, it may impact the labelling efficiency, artifactually giving open chromatin more TSA labelling. The good news is that open chromatin peaks are more localized (~100-300bp), whereas changes in speckle associaiton are more broad (20-500kb). Thus, with accessibility data, open chromatin peaks can be filtered out.
-#### Filter out open chromatin for each bam file
-```
-bedtools intersect -v -abam file.bam -b IMR90_ATAC_peaks_merged.bed > file_filtered.bam
-```
-#### Or for all files
-```
-for file in *.bam; do bedtools intersect -v -abam $file -b IMR90_ATAC_peaks_merged.bed > ${file//.bam/_filtered.bam}; done
-```
-With the filtered bam file, re-run DiffBind as above. You will need to make a new "diffBindTemplate.txt" file reflecting the names of the filtered bam files. WARNING: This will overwrite the previously done DiffBind analysis if done in the same directory!
+
 # Extract differential domains and merge
 The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file. Because SON TSA-seq data is less reliable at higher distances to the speckle (lower SON signals), this script eliminates bins that have SON concentrations below a certian threshold. This threshold be edited within the script.
 #### Extract significant bins
