@@ -16,9 +16,14 @@ BAM files with duplicates removed are the starting point for this repository ana
 
 # Scales of analysis
 One key question for analysis of SON TSA-seq is what is the appropriate scale of which to measure biologically meaningful changes. This analysis hence examines changes in SON TSA-seq signal across multiple genomic scales and features.
-## Genomic bins
+### Genomic bins
 The genome is divided into equal-sized bins and differences in SON TSA-seq signal are examined across a sliding scale of bins. Significant bins are then merged. This approach has the advantage of being agnostic to genomic features, and thus captures differences in signal in an unbiased manner. 
-## Domains
+### Domains
 Regulated changes in speckle association may occur across genomic features such as domains or compartments. For example, one topologically associated domain (TAD) may increase SON signal, while its neighbor TAD does not change. Likewise, there may be speckle associated domains (SPADs) that globally increase speckle association, while others do not. Thus, we quantify SON signal over TADs and SPADs to compare the features of TADs/SPADs that change speckle association versus those that do not. 
-## Loci of interest
+### Loci of interest
 For gene sets (i.e. p53 targets) or peak sets of interest (i.e. p53 peaks), assessment of SON TSA-seq differences centered on transcription start sites or peaks may be beneficial. Loci-centric analysis has been particularly informative for contrasting target genes that have regulated speckle association with target genes that do not have regulated speckle association.
+
+# Filtering  
+A current unknown with SON TSA-seq is the extent to which changes in chromatin state influences laballing efficiency. For example, if chromatin becomes more accessible, might it artificially increase signal as a consequence of more efficient labelling of open chromatin? To account for potentially confounding effects of changes in chromatin state, regions such as ATAC-seq peaks, transcribed regions, and H3K27ac peaks can be filtered out from BAM files. In the case of p53-induced changes in speckle association, this filtering did not have a substancial impact on the overall results.
+
+
