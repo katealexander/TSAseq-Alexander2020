@@ -41,9 +41,9 @@ There will be three output files for each of the 9 bed files.
 The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file. Because SON TSA-seq data is less reliable at higher distances to the speckle (lower SON signals), this script eliminates bins that have SON concentrations below a certian threshold. This threshold be edited within the script.
 #### Extract significant bins
 ```
-for file in SON[1-9]_DiffBindResults_50kb.txt; do python extractNutlinUpSignificant.py $file >> significant_upNutlin_50kb.bed; done
+for file in DiffBindResults_diffBind_bins_50000_[1-9].txt; do python extractNutlinUpSignificant.py $file >> significant_upNutlin_50kb.bed; done
 
-for file in SON[1-9]_DiffBindResults_50kb.txt; do python extractNutlinDownSignificant.py $file >> significant_downNutlin_50kb.bed; done
+for file in DiffBindResults_diffBind_bins_50000_[1-9].txt; do python extractNutlinDownSignificant.py $file >> significant_downNutlin_50kb.bed; done
 ```
 #### Sort and merge
 ```
