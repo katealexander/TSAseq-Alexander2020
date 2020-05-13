@@ -28,7 +28,14 @@ for file in bins_50000_*.bed; do ./runMakeDiffBindFile.sh $file; done
 This will create 9 DiffBind sample sheets, one for each sliding window, called diffBind_bins_50000_[1-9].txt
 
 # Run DiffBind
-This will output two files for each of the 9 bed files. A counts file () that contains the normalized counts for each sample within each bin, and a DiffBind results file () that contains the concentrations and statistics for the control and treatment of each bin. 
+This R script will loop through the 9 DiffBind sample sheets, running DiffBind for each set of bins. It will take a long time to run. 
+```
+runDiffBind.R diffBind_bins_100000_
+```
+There will be three output files for each of the 9 bed files.
+1. A counts file ("counts_diffBind_bins_50000_[1-9].txt") that contains normalized counts for each sample within each bin.
+2. A DiffBind results file ("DiffBindResults_diffBind_bins_50000_[1-9].txt") containing concentrations for each condition and p-values for the condition
+3. The DiffBind object ("dba_diffBind_bins_50000_[1-9].RData"). This will be highly useful if you would like to do any of the other wonderful DiffBind functions on your dataset. See https://rdrr.io/bioc/DiffBind/man/ for more DiffBind functions.
 
 # Extract differential domains and merge
 The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file. Because SON TSA-seq data is less reliable at higher distances to the speckle (lower SON signals), this script eliminates bins that have SON concentrations below a certian threshold. This threshold be edited within the script.
