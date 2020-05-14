@@ -1,6 +1,6 @@
 # Assessing domains
 This analysis evaluates TSA-seq changes on a domain level with the purpose of being able to compare the features of domains that do or do not increase signal. 
-# Obtaining TADs
+# Obtain TADs
 TADs can be obtained from HiC datasets, and have already been computed for several cell types. This analysis used IMR90 TADs (http://chromosome.sdsc.edu/mouse/hi-c/download.html).
 ### Ensure TADs do not overlap
 If TADs overlap by even 1bp, DiffBind will merge the TADs. This python script will add 1bp to the start of a TAD if it was the same as the stop of the previous TAD.
@@ -33,4 +33,12 @@ chr1	7960000	8320000
 chr1	8320001	8880000
 chr1	8880001	9600000
 ```
-# Obtaining SPADs
+# Obtain SPADs
+
+# Run DiffBind
+http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf
+```
+#USAGE: Rscript runDiffBind.R diffBindSampleSheet.txt PREFIX
+Rscript runDiffBind.R diffBindTemplate_TADs.txt TADs
+```
+
