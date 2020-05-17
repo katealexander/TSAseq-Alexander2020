@@ -44,7 +44,7 @@ geneList <- list(up=SONsGene.df$ENTREZID, ns=SONnsGene.df$ENTREZID)
 y=compareCluster(geneList, fun = "enrichGO", ont = "BP", OrgDb = org.Hs.eg.db)
 ```
 #### simplify GO terms
-This collapses similar GO terms. Cutoff can be adjusted for more or less collapsing
+This collapses similar GO terms. Cutoff can be adjusted for more or less collapsing. See https://guangchuangyu.github.io/2015/10/use-simplify-to-remove-redundancy-of-enriched-go-terms/
 ```
  Y <- simplify(y, cutoff=0.7)
 ```
