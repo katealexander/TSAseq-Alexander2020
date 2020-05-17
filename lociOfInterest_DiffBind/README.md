@@ -48,7 +48,7 @@ This collapses similar GO terms. Cutoff can be adjusted for more or less collaps
 ```
  Y <- simplify(y, cutoff=0.7)
 ```
-#### plot
+#### plot GO
 ```
 dotplot(Y, showCategory = 20)
 ```
@@ -56,7 +56,7 @@ dotplot(Y, showCategory = 20)
 ```
 x=compareCluster(geneList, fun = "enrichKEGG", OrgDb = org.Hs.eg.db)
 ```
-#### plot
+#### plot KEGG
 ```
 dotplot(x, showCategory = 20)
 ```
