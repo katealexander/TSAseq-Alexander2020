@@ -13,5 +13,7 @@ python getTSS_interval_ofGeneList.py hg19_TSS.txt IMR90_p53targets.txt 25000 > I
 ## Extract genes 
 
 ## Type I and Type II errors
-In addressing the robustness of SON TSA-seq for detecting true positives and true negatives, it is useful to have an independent method of validation, such as immunoDNA-FISH experiments. With this data, 
+In addressing the robustness of SON TSA-seq for detecting true positives and true negatives, it is useful to have an independent method of validation, such as immunoDNA-FISH experiments. With this data,
+## Cluster profiler for gene ontology
+Cluster profiler (https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) is an R package for statistical analysis and visualization of functional profiles. Breif tutorial: https://guangchuangyu.github.io/2016/01/go-analysis-using-clusterprofiler/
 
