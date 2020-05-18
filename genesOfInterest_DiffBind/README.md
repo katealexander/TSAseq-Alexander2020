@@ -1,5 +1,3 @@
-# Loci of interest
-This analysis is for when you have loci of interest for which you would like to compare the characteristics of those that increase speckle association versus those that do not. 
 # Genes of interest
 In order to run DiffBind on a set of genes of interest (for example p53 targets), genomic intervals are needed. Based on my analysis, 25kb windows centered on the transcription start site have worked well. However, different size windows can be assessed and compared. Be aware that if the genes of interest are too close together, or the window size too large, this could lead to overlapping windows, which will be merged by DiffBind.
 ## Get intervals of genes centered on the TSS
