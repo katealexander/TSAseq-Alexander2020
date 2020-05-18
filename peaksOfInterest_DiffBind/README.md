@@ -5,7 +5,7 @@ A key question is what are the key features that distinguish between peaks that 
   
 I followed this tutorial: https://stats.idre.ucla.edu/r/dae/logit-regression/
 ## Selection of variables
-The variables of interest can be continuous (i.e. SON concentration at baseline)
+The variables of interest can be continuous (i.e. SON concentration at baseline) or discrete (i.e. gene dense versus gene sparse). I chose SON concentration at baseline, gene density, HiC subcompartment, and number of neighboring p53 peaks based on my other experimental observations. However, additional or other variables can also be examined.
 ## Setting up the data
 
 ```
