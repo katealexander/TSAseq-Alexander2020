@@ -129,5 +129,6 @@ newdata3 <- within(newdata3, {
 ```
 ### Plot
 ```
+library(ggplot2)
 ggplot(newdata3, aes(x = concDMSO, y = PredictedProb)) + geom_ribbon(aes(ymin = LL, ymax = UL, fill = peaks1to10), alpha = 0.2) + geom_line(aes(colour = peaks1to10), size = 1) + theme_classic()
 ```
