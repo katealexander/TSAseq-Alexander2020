@@ -5,10 +5,17 @@ A key question is what are the key features that distinguish between p53 targets
 The variables of interest can be continuous (i.e. SON concentration at baseline) or discrete (i.e. gene dense versus gene sparse). I chose SON concentration at baseline, gene density, HiC subcompartment, and number of neighboring p53 peaks based on my other experimental observations. However, additional or other variables can also be examined.
 
 ## Setting up the data
+Get all of the variables into a table where each row is a gene, and each column is a variable of interest. Speckle association should be 0 for not associated and 1 for associated. Categorical variables should be numbered 1-n. For example, HiC subcompartments are: 1=A1, 2=A2, 3=B1, 4=B2 5=B3.  
 
+This is what I used to get my data formatted into a table:
 ```
-python getPeakData.py diffBindResults_peaks_25kb.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed geneDensity.bed IMR90_track_hg19_HiCsubcompartments.bed > p53PeakData_forLogisticRegression.txt
+# "USAGE: python getGeneData.py genesAssociated genesNotAssociated TSSs diffBindResultsBins peakFile density HiCsubcompartments > outFile"
+
+# EXAMPLE
+python getGeneData.py IMR90_p53targs_upSONpadj0.01.txt IMR90_p53targs_nsSONpadjOver0.1.txt hg19_TSS.txt DiffBindResults_50kb1.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed geneDensity.bed IMR90_track_hg19_HiCsubcompartments.bed > geneData_forLogisticRegression.txt
 ```
+"IMR90_p53targs_upSONpadj0.01.txt" and "IMR90_p53targs_nsSONpadjOver0.1.txt" are lists of the IMR90 p53 targets that increase or do not increase speckle association obtained from 
+
 ## Create logistic model in R
 I followed this tutorial: https://stats.idre.ucla.edu/r/dae/logit-regression/
 #### Load data into R
