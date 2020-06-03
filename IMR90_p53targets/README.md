@@ -1,15 +1,6 @@
-# TSAseq-Alexander2020
-This pipeline was used for differential analysis of SON TSA-seq data upon p53 activation (Alexander 2020). It supplements available tools for assessing changes in speckle association of chromatin (https://github.com/lgchang27/TSA-Seq-2.0-Analysis; https://github.com/zocean/Norma from https://www.biorxiv.org/content/10.1101/824433v1.full; https://doi.org/10.1083/jcb.201807108). It differs from these analysis methods in that it utilizes the DiffBind R package to assess changes over multiple window sizes.
+# IMR90 p53 targets
+p53 targets vary widely between different cell types and conditions. We therefore used our data to generate a list of p53 targets in IMR90 cells. This was a utilitarian approach to understand the consequences of p53-mediated speckle assocaition on gene expression in IMR90 cells, and shouldn't be considered an exhaustive list of p53 targets. See https://p53.iarc.fr/TargetGenes.aspx for several other resources on direct p53 targets.
 
-# Requirements
-R packages: DiffBind  
-bedtools (https://bedtools.readthedocs.io/en/latest/content/installation.html)  
-Python 2.7  
+# Functional definition of IMR90 p53 target
+We defined a p53 target as a gene within 200kb of a p53 peak in IMR90 cells with p53 activated (treated with Nutlin for 6h) that increased expression (padj < 0.01) at any point in our Nutlin timecourse RNA-seq data (covering 6h, 9h, and 12h after Nutlin treatment).
 
-# Data preparation
-From demultiplexed fastq files, paired-end sequencing data was:  
-1. Aligned with Bowtie2 (http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)  
-2. Converted to BAM file format
-3. Duplicates removed using Picard (https://gatk.broadinstitute.org/hc/en-us/articles/360037052812-MarkDuplicates-Picard-)  
-
-BAM files with duplicates removed are the starting point for this repository analysis.
