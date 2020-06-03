@@ -30,7 +30,8 @@ This will create 9 DiffBind sample sheets, one for each sliding window, called d
 # Run DiffBind
 This R script will loop through the 9 DiffBind sample sheets, running DiffBind for each set of bins. It will take a long time to run. 
 ```
-Rscript runDiffBind_genomicBins.R diffBind_bins_50000_
+USAGE: Rscript runDiffBind.R sampleSheet basename
+Rscript runDiffBind_genomicBins.R diffBind_bins_50000_ 
 ```
 There will be three output files for each of the 9 bed files.
 1. A counts file ("counts_diffBind_bins_50000_[1-9].txt") that contains normalized counts for each sample within each bin.
