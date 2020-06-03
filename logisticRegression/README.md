@@ -1,9 +1,9 @@
-# Peaks of interest
-# Run DiffBind
 # Logistic regression
-A key question is what are the key features that distinguish between peaks or genes that increase speckle association versus the ones that do not. In my analysis, I found that p53 peaks that are within speckle associated domains (SPADs) at baseline, in gene dense regions, in the A1 subcompartment, or have more neighboring p53 peaks are more likely to have p53-induced increases in speckle association. To answer the question of which of these have the most impact on p53-induced changes in speckle association, I used a logistic regression, applying it to each variable on their own or in combination with one another.
+A key question is what are the key features that distinguish between p53 targets that increase speckle association versus the ones that do not. In my analysis, I found that p53 targets that are within speckle associated domains (SPADs) at baseline, in gene dense regions, in the A1 subcompartment, or have more neighboring p53 peaks are more likely to have p53-induced increases in speckle association. To quantify the estimated predictive capacity of each of these variables, I used a logistic regression, applying it to each variable. 
+
 ## Selection of variables
 The variables of interest can be continuous (i.e. SON concentration at baseline) or discrete (i.e. gene dense versus gene sparse). I chose SON concentration at baseline, gene density, HiC subcompartment, and number of neighboring p53 peaks based on my other experimental observations. However, additional or other variables can also be examined.
+
 ## Setting up the data
 
 ```
