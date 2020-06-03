@@ -41,10 +41,14 @@ There will be three output files for each of the 9 bed files.
 The DiffBind results file extracted above includes all bins. Use the following to extract the significant bins (p-value can be altered within script) and concatenate into one BED file. Because SON TSA-seq data is less reliable at higher distances to the speckle (lower SON signals), this script eliminates bins that have SON concentrations below a certain threshold. This threshold can be edited within the script.
 #### Extract significant bins
 ```
-for file in DiffBindResults_diffBind_bins_50000_[1-9].txt; do python extractNutlinUpSignificant.py $file >> significant_upNutlin_50kb.bed; done
+## USAGE: python extractNutlinUpSignificant.py diffBindOutput padj > outFile
+for file in DiffBindResults_diffBind_bins_50000_[1-9].txt; do python extractNutlinUpSignificant.py $file 0.01 >> significant_upNutlin_50kb.bed; done
 
-for file in DiffBindResults_diffBind_bins_50000_[1-9].txt; do python extractNutlinDownSignificant.py $file >> significant_downNutlin_50kb.bed; done
+## USAGE: python extractNutlinDownSignificant.py diffBindOutput padj > outFile
+for file in DiffBindResults_diffBind_bins_50000_[1-9].txt; do python extractNutlinDownSignificant.py $file 0.01 >> significant_downNutlin_50kb.bed; done
 ```
+Here, an adjusted p-value (padj) of 0.01 is selected based on trying padj from 0.05 to 1e-5 and comparing to DNA-FISH data from 21 genes that either increased speckle association (7 genes) or did not increase speckle association (14 genes). Based on this, genes that increase SON signal with padj < 0.01 are deemed to increase speckle association, while genes that have padj > 0.1 are deemed to not increase speckle association. 
+
 #### Sort and merge
 ```
 bedtools sort -i significant_upNutlin_50kb.bed > significant_upNutlin_sorted_50kb.bed
@@ -58,3 +62,5 @@ This gene list can then be compared to expression data to evaluate whether genes
 ```
 python getGenesWithin.py hg19_TSS.txt significant_upNutlin_merged.bed > significant_upNutlin_merged_genes.txt
 ```
+
+
