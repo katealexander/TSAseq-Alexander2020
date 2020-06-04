@@ -1,7 +1,7 @@
  # Cluster profiler for gene ontology
 Cluster profiler (https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html) is an R package for statistical analysis and visualization of functional profiles. Brief tutorial: https://guangchuangyu.github.io/2016/01/go-analysis-using-clusterprofiler/
 
-#### In R load gene lists of p53 targets that increase SON signal or do not increase SON signal
+#### In R, load gene lists of p53 targets that increase SON signal or do not increase SON signal
 ```
 SONns <- read.table("notIncreasingSON_p53targs.txt", header=F)
 SONs <- read.table("increasingSON_p53targs.txt", header=F)
