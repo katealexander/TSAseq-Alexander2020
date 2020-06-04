@@ -1,6 +1,7 @@
 # Create sliding windows
-Usage: python getGenomeBins.py hg19.chrom.sizes binSize
+Because the scale of changes observable by SON TSA-seq has yet to be completely explored, I recommend analysis using a range of window sizes. The resolution of SON TSA-seq is thought to be ~20kb. In my analysis, I used 25kb, 50kb, 100kb, and 500kb window sizes and compared to DNA-FISH data that measured speckle association. Larger window sizes tend to be less noisy comparing replicates and relating to DNA-FISH measured speckle distances, but are also not as sensitive in detecting p53-induced changes in speckle association. 50kb windows (shown below) would be a good starting point for a first run through the analysis.
 ```
+# USAGE: python getGenomeBins.py hg19.chrom.sizes binSize
 python getGenomeBins.py hg19.chrom.sizes 50000
 ```
 This outputs 9 bed files (bins_50000_[1-9].bed) of 50kb windows (binSize), sliding by 5kb (or binSize/10) in each file. 
@@ -58,6 +59,7 @@ bedtools sort -i significant_downNutlin_50kb.bed > significant_downNutlin_sorted
 bedtools merge -i significant_upNutlin_sorted_50kb.bed > significant_upNutlin_merged_50kb.bed
 bedtools merge -i significant_downNutlin_sorted_50kb.bed > significant_downNutlin_merged_50kb.bed
 ```
+
 # Get list of genes within significant domains
 To get a list of genes that fall within significant domains, I used the following Python script.
 ```
