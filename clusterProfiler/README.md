@@ -4,7 +4,7 @@ Cluster profiler (https://bioconductor.org/packages/release/bioc/html/clusterPro
 #### In R, load gene lists of p53 targets that increase SON signal or do not increase SON signal
 ```
 SONns <- read.table("IMR90_p53targs_nsSONpadjOver0.1.txt", header=F)
-SONs <- read.table("increasingSON_p53targs.txt", header=F)
+SONs <- read.table("IMR90_p53targs_upSONpadj0.01.txt", header=F)
 row.names(SONns) <- SONns$V1
 row.names(SONs) <- SONs$V1
 SONnsGene <- row.names(SONns)
