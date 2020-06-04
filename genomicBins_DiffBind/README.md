@@ -59,9 +59,9 @@ bedtools merge -i significant_upNutlin_sorted_50kb.bed > significant_upNutlin_me
 bedtools merge -i significant_downNutlin_sorted_50kb.bed > significant_downNutlin_merged_50kb.bed
 ```
 # Get list of genes within significant domains
-This gene list can then be compared to expression data to evaluate whether genes that change SON signal are enriched for genes that change expression levels.
+To get a list of genes that fall within significant domains, I used the following Python script.
 ```
 python getGenesWithin.py hg19_TSS.txt significant_upNutlin_merged.bed > significant_upNutlin_merged_genes.txt
 ```
-
+This gene list can then be compared to expression data to evaluate whether genes that change SON signal are enriched for genes that change expression levels.
 
