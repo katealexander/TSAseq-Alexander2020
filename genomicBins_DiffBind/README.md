@@ -19,10 +19,8 @@ To run DiffBind, a sample sheet is needed for each of the 9 bed files of the sli
 SampleID,Tissue,Factor,Condition,Replicate,bamReads,ControlID,bamControl,Peaks,PeakCaller
 SON_CONTROLrep1,IMR90,SON,control,1,SON_control_rep1.bam,INPUT_CONTROL_rep1,INPUT_control_rep1.bam
 SON_CONTROLrep2,IMR90,SON,control,2,SON_control_rep2.bam,INPUT_CONTROL_rep2,INPUT_control_rep2.bam
-SON_CONTROLrep3,IMR90,SON,control,3,SON_control_rep3.bam,INPUT_CONTROL_rep3,INPUT_control_rep3.bam
 SON_TREATMENTrep1,IMR90,SON,treatment,1,SON_treatment_rep1.bam,INPUT_TREATMENT_rep1,INPUT_treatment_rep1.bam
 SON_TREATMENTrep2,IMR90,SON,treatment,2,SON_treatment_rep2.bam,INPUT_TREATMENT_rep2,INPUT_treatment_rep2.bam
-SON_TREATMENTrep3,IMR90,SON,treatment,3,SON_treatment_rep3.bam,INPUT_TREATMENT_rep3,INPUT_treatment_rep3.bam
 ```
 The Diff Bind template should be named "diffBindTemplate.txt"
 
@@ -36,11 +34,12 @@ This will create 9 DiffBind sample sheets, one for each sliding window, called d
 #### Example of one of the resulting sample sheets, "diffBind_bins_50000_1.txt"
 ```
 SampleID,Tissue,Factor,Condition,Replicate,bamReads,ControlID,bamControl,Peaks,PeakCaller
-DMSO3,IMR90,SON,DMSO,3,2-SON-dmso2.noDups.bam,DMSO3i,9-Input-dmos2.noDups.bam,bins_50000_1.bed,bed
-DMSO4,IMR90,SON,DMSO,4,3-SON-dmso3.noDups.bam,DMSO4i,10-Input-dmso3.noDups.bam,bins_50000_1.bed,bed
-NUTLIN3,IMR90,SON,NUTLIN,3,5-SON-nutlin2.noDups.bam,NUTLIN3i,12-Input-nutlin2.noDups.bam,bins_50000_1.bed,bed
-NUTLIN4,IMR90,SON,NUTLIN,4,6-SON-nutlin3.noDups.bam,NUTLIN4i,13-Input-nutlin3.noDups.bam,bins_50000_1.bed,bed
+SON_CONTROLrep1,IMR90,SON,control,1,SON_control_rep1.bam,INPUT_CONTROL_rep1,INPUT_control_rep1.bam,bins_50000_1.bed,bed
+SON_CONTROLrep2,IMR90,SON,control,2,SON_control_rep2.bam,INPUT_CONTROL_rep2,INPUT_control_rep2.bam,bins_50000_1.bed,bed
+SON_TREATMENTrep1,IMR90,SON,treatment,1,SON_treatment_rep1.bam,INPUT_TREATMENT_rep1,INPUT_treatment_rep1.bam,bins_50000_1.bed,bed
+SON_TREATMENTrep2,IMR90,SON,treatment,2,SON_treatment_rep2.bam,INPUT_TREATMENT_rep2,INPUT_treatment_rep2.bam,bins_50000_1.bed,bed
 ```
+You can also make these manually if you feel like it.
 
 # Run DiffBind
 This R script will loop through the 9 DiffBind sample sheets, running DiffBind for each set of bins. It will take a long time to run. 
