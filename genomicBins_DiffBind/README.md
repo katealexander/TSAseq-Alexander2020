@@ -1,3 +1,6 @@
+# DiffBind for SON TSA-seq
+The following uses the [DiffBind](https://bioconductor.org/packages/release/bioc/html/DiffBind.html) R package to quantify and assess significance of SON TSA-seq data across genomic windows.
+
 # Create sliding windows
 Because the scale of changes observable by SON TSA-seq has yet to be completely explored, I recommend analysis using a range of window sizes. The resolution of SON TSA-seq is thought to be ~20kb. In my analysis, I used 25kb, 50kb, 100kb, and 500kb window sizes and compared to DNA-FISH data that measured speckle association. Larger window sizes tend to be less noisy comparing replicates and relating to DNA-FISH measured speckle distances, but are also not as sensitive in detecting p53-induced changes in speckle association. 50kb windows (shown below) would be a good starting point for a first run through of the analysis. However, the appropriate bin size may depend on the biological process under investigation.
 ```
@@ -7,7 +10,7 @@ python getGenomeBins.py hg19.chrom.sizes 50000
 This outputs 9 bed files (bins_50000_[1-9].bed) of 50kb windows (binSize), sliding by 5kb (or binSize/10) in each file. 
 
 # Make DiffBind sample sheets
-To run DiffBind, a sample sheet is needed for each of the 9 bed files of the sliding windows. Start with a template DiffBind sample sheet (example diffBindTemplate.txt), as described by DiffBind documentation (http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf), leaving out Peaks and PeakCaller columns as in example.
+To run DiffBind, a sample sheet is needed for each of the 9 bed files of the sliding windows. Start with a template DiffBind sample sheet (example diffBindTemplate.txt), as described by DiffBind [documentation](http://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf), leaving out Peaks and PeakCaller columns as in example.
 
 #### Example diffBindTemplate.txt
 ```
