@@ -33,6 +33,15 @@ for file in bins_50000_*.bed; do ./runMakeDiffBindFile.sh $file; done
 ```
 This will create 9 DiffBind sample sheets, one for each sliding window, called diffBind_bins_50000_[1-9].txt
 
+#### Example of one of the resulting sample sheets, "diffBind_bins_50000_1.txt"
+```
+SampleID,Tissue,Factor,Condition,Replicate,bamReads,ControlID,bamControl,Peaks,PeakCaller
+DMSO3,IMR90,SON,DMSO,3,2-SON-dmso2.noDups.bam,DMSO3i,9-Input-dmos2.noDups.bam,bins_50000_1.bed,bed
+DMSO4,IMR90,SON,DMSO,4,3-SON-dmso3.noDups.bam,DMSO4i,10-Input-dmso3.noDups.bam,bins_50000_1.bed,bed
+NUTLIN3,IMR90,SON,NUTLIN,3,5-SON-nutlin2.noDups.bam,NUTLIN3i,12-Input-nutlin2.noDups.bam,bins_50000_1.bed,bed
+NUTLIN4,IMR90,SON,NUTLIN,4,6-SON-nutlin3.noDups.bam,NUTLIN4i,13-Input-nutlin3.noDups.bam,bins_50000_1.bed,bed
+```
+
 # Run DiffBind
 This R script will loop through the 9 DiffBind sample sheets, running DiffBind for each set of bins. It will take a long time to run. 
 ```
