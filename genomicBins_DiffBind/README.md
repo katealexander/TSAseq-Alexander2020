@@ -79,5 +79,4 @@ To get a list of genes whose transcription start sites fall within significant d
 # USAGE: python getGenesWithin.py TSS BED > outFile
 python getGenesWithin.py hg19_TSS.txt significant_upNutlin_merged.bed > significant_upNutlin_merged_genes.txt
 ```
-This gene list can then be compared to expression data to evaluate whether genes that change SON signal are enriched for genes that change expression levels.
 
