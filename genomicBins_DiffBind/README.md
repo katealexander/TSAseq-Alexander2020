@@ -62,7 +62,7 @@ for file in DiffBindResults_50kb[1-9].txt; do python extractNutlinUpSignificant.
 ## USAGE: python extractNutlinDownSignificant.py diffBindOutput padj > outFile
 for file in DiffBindResults_50kb[1-9].txt; do python extractNutlinDownSignificant.py $file 0.01 >> significant_downNutlin_50kb.bed; done
 ```
-Here, an adjusted p-value (padj) of 0.01 is selected based on trying padj from 0.05 to 1e-5 and comparing to DNA-FISH data from 21 genes that either increased speckle association (7 genes) or did not increase speckle association (14 genes). Based on this, genes that increase SON signal with padj < 0.01 are deemed to increase speckle association, while genes that have padj > 0.1 are deemed to not increase speckle association. 
+Here, an adjusted p-value (padj) of 0.01 is selected based on trying padj from 0.05 to 1e-5 and comparing to DNA-FISH data from genes that either increased speckle association (7 genes) or did not increase speckle association (14 genes). Based on this, genes that increase SON signal with padj < 0.01 are deemed to increase speckle association, while genes that have padj > 0.1 are deemed to not increase speckle association. 
 
 #### Sort and merge
 ```
