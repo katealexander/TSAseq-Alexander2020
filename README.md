@@ -15,7 +15,7 @@ From demultiplexed fastq files, paired-end sequencing data was:
 BAM files with duplicates removed are the starting point for this repository analysis.
 # Analysis
 ### genomicBins_DiffBind
-genomicBins_DiffBind uses Python to split the genome into user-specified bin sizes. Then applies DiffBind to these bins to quantify TSA-seq signal and detect significant differences. Significant bins are extracted using Python, then sorted and merged using Bedtools. Finally, the genes within merged significant bins are extracted using Python.
+genomicBins_DiffBind uses Python to split the genome into user-specified bin sizes. It then applies DiffBind to these bins to quantify TSA-seq signal and detect significant differences. Significant bins are extracted using Python, then sorted and merged using Bedtools. Finally, the genes within merged significant bins are extracted using Python.
 ### IMR90_p53targets
 IMR90_p53targets explains how IMR90 p53 targets were defined for the purpose of this analysis, and uses Python to obtain genes within 200kb of a p53 peak.
 ### logisticRegression
