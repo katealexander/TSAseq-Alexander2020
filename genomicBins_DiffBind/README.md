@@ -39,7 +39,7 @@ SON_CONTROLrep2,IMR90,SON,control,2,SON_control_rep2.bam,INPUT_CONTROL_rep2,INPU
 SON_TREATMENTrep1,IMR90,SON,treatment,1,SON_treatment_rep1.bam,INPUT_TREATMENT_rep1,INPUT_treatment_rep1.bam,bins_50000_1.bed,bed
 SON_TREATMENTrep2,IMR90,SON,treatment,2,SON_treatment_rep2.bam,INPUT_TREATMENT_rep2,INPUT_treatment_rep2.bam,bins_50000_1.bed,bed
 ```
-You can also make these manually if you feel like it.
+You can also make these manually, if you prefer.
 
 # Run DiffBind
 This R script will loop through the 9 DiffBind sample sheets, running DiffBind for each set of bins. It will take a long time to run. 
