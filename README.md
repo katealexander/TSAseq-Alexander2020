@@ -3,14 +3,14 @@ This pipeline was used for differential analysis of SON TSA-seq data upon p53 ac
 
 # Requirements
 R packages: DiffBind  
-bedtools (https://bedtools.readthedocs.io/en/latest/content/installation.html)  
+[bedtools](https://bedtools.readthedocs.io/en/latest/content/installation.html)  
 Python 2.7  
 
 # Data preparation
 From demultiplexed fastq files, paired-end sequencing data was:  
-1. Aligned with Bowtie2 (http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)  
+1. Aligned with [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)  
 2. Converted to BAM file format
-3. Duplicates removed using Picard (https://gatk.broadinstitute.org/hc/en-us/articles/360037052812-MarkDuplicates-Picard-)  
+3. Duplicates removed using [Picard](https://gatk.broadinstitute.org/hc/en-us/articles/360037052812-MarkDuplicates-Picard-)  
 
 BAM files with duplicates removed are the starting point for this repository analysis.
 # Analysis
