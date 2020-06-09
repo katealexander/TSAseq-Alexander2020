@@ -5,7 +5,7 @@ p53 targets vary widely between different cell types and conditions. We therefor
 We defined a p53 target as a gene within 200kb of a p53 peak in IMR90 cells with p53 activated (treated with Nutlin for 6h) that increased expression (padj < 0.05; DESeq2 analysis) at any point in our Nutlin timecourse RNA-seq data (covering 6h, 9h, and 12h after Nutlin treatment).
 
 ## Genes increasing expression in IMR90 cells treated with Nutlin
-Overlap of genes (shown using [Venny](https://bioinfogp.cnb.csic.es/tools/venny/)) reveals  that a total of 2766 genes increase after 6h, 9h, or 12h as compared to the DMSO control. 
+Overlap of genes (shown using [Venny](https://bioinfogp.cnb.csic.es/tools/venny/)) reveals  that a total of 2766 genes increase after 6h, 9h, or 12h of Nutlin treatment as compared to the DMSO control. 
   
 <img src="https://github.com/katealexander/TSAseq-Alexander2020/blob/master/images/Venny.png" alt="drawing" width="500"/>
 
