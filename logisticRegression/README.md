@@ -14,81 +14,70 @@ This is what I used to get my data formatted into a table:
 # "USAGE: python getGeneData.py genesAssociated genesNotAssociated TSSs diffBindResultsBins peakFile density HiCsubcompartments > outFile"
 
 # EXAMPLE
-python getGeneData.py IMR90_p53targs_upSONpadj0.01.txt IMR90_p53targs_nsSONpadjOver0.1.txt hg19_TSS.txt DiffBindResults_50kb1.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed geneDensity.bed IMR90_track_hg19_HiCsubcompartments.bed > geneData_forLogisticRegression.txt
+python getGeneData.py IMR90_p53targs_upSONpadj0.01.txt IMR90_p53targs_nsSONpadjOver0.1.txt hg19_TSS.txt DiffBindResults_100kb5.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed geneDensity.bed IMR90_track_hg19_HiCsubcompartments.bed > geneData_with100kbBin5_padj0.01.txt
 ```
 "IMR90_p53targs_upSONpadj0.01.txt" and "IMR90_p53targs_nsSONpadjOver0.1.txt" are lists of the IMR90 p53 targets that increase or do not increase speckle association obtained from 
 
 ## Create logistic model in R
-I followed this tutorial: https://stats.idre.ucla.edu/r/dae/logit-regression/
+I followed instructions from this [tutorial](https://stats.idre.ucla.edu/r/dae/logit-regression/) and this [tutorial](https://stats.idre.ucla.edu/r/dae/logit-regression/)
 #### Load data into R
 ```
-b <- read.table("geneData_forLogisticRegression.txt", header=T)
- head(b)
-     gene associated HiC Density peaks1to10 peaks10to200 concDMSO concNutlin
-1  PGM2L1          0   1       1          1            2     9.99       9.50
-2   NAA60          0   1       2          1            2    11.50      11.58
-3    FDXR          1   1       2          2            1    10.49      11.44
-4    MT1E          0   1       2          1            2    11.16      11.27
-5   VDAC2          0   1       1          2            1     9.79       9.70
-6 HSBP1L1          0   1       1          1            2     9.44       9.19
+b <- read.table("geneData_with100kbBin5_padj0.01.txt", header=T)
+head(b)
+    gene associated HiC Density numPeaks concDMSO concNutlin
+1 PGM2L1          0   1       1        1     9.99       9.50
+2 UBE2Q2          0   1       1        2    10.53      10.64
+3  RNF11          0   2       1        1     7.17       5.20
+4  RNF13          0   2       1        1     7.10       7.77
+5    B2M          0   3       1        1     7.93       7.85
+6   PRNP          0   1       1        1     9.23       9.70
 ```
 #### Tell R which variables are discrete
 ```
 b$HiC <- as.factor(b$HiC)
 b$Density <- as.factor(b$Density)
-b$peaks1to10 <- as.factor(b$peaks1to10)
-b$peaks10to200 <- as.factor(b$peaks10to200)
+b$numPeaks <- as.factor(b$numPeaks)
 ```
 
 ### Logistic model
-##### All factors
+##### HiC subcompartment logistic regression
 ```
-mylogit <- glm(associated ~ HiC + Density + peaks1to10 + peaks10to200 + concDMSO, data = b, family = "binomial")
+mylogit <- glm(associated ~ numPeaks, data = b, family = "binomial")
 ```
-##### Results from all factors
+##### Results HiC subcompartment logistic regression
 ```
 summary(mylogit)
 Call:
-glm(formula = associated ~ HiC + Density + peaks1to10 + peaks10to200 + 
-    concDMSO, family = "binomial", data = b)
+glm(formula = associated ~ numPeaks, family = "binomial", data = b)
 
 Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--2.73319  -0.07374  -0.00184   0.00000   2.63938  
+    Min       1Q   Median       3Q      Max  
+-0.8873  -0.6899  -0.5480  -0.5480   1.9850  
 
 Coefficients:
-                 Estimate Std. Error z value Pr(>|z|)    
-(Intercept)    -3.999e+01  4.074e+00  -9.817   <2e-16 ***
-HiC2            1.867e-01  6.434e-01   0.290   0.7716    
-HiC3            5.766e-01  7.412e-01   0.778   0.4366    
-HiC4            7.663e+00  1.571e+03   0.005   0.9961    
-HiC5           -8.243e+00  1.271e+03  -0.006   0.9948    
-Density2        8.668e-01  3.399e-01   2.550   0.0108 *  
-peaks1to102     7.964e-01  4.162e-01   1.914   0.0557 .  
-peaks1to103     1.213e+00  7.072e-01   1.715   0.0864 .  
-peaks1to104     2.035e+00  1.136e+01   0.179   0.8578    
-peaks1to105     1.901e+01  1.075e+04   0.002   0.9986    
-peaks10to2002   5.485e-02  8.266e-01   0.066   0.9471    
-peaks10to2003   1.837e-01  8.348e-01   0.220   0.8258    
-peaks10to2004  -1.304e-02  8.787e-01  -0.015   0.9882    
-peaks10to2005  -1.020e-01  1.009e+00  -0.101   0.9195    
-peaks10to2006   1.875e-01  1.129e+00   0.166   0.8681    
-peaks10to2007   9.287e-01  1.282e+00   0.724   0.4689    
-peaks10to2008  -1.479e+01  4.855e+03  -0.003   0.9976    
-peaks10to2009  -2.802e+01  6.439e+03  -0.004   0.9965    
-peaks10to20016 -2.608e+00  1.075e+04   0.000   0.9998    
-concDMSO        3.380e+00  3.588e-01   9.420   <2e-16 ***
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  -1.8200     0.1083 -16.799  < 2e-16 ***
+numPeaks2     0.5058     0.1667   3.034  0.00241 ** 
+numPeaks3     1.0909     0.1542   7.073 1.52e-12 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 914.84  on 1305  degrees of freedom
-Residual deviance: 279.67  on 1286  degrees of freedom
-AIC: 319.67
+    Null deviance: 1486.2  on 1460  degrees of freedom
+Residual deviance: 1435.7  on 1458  degrees of freedom
+AIC: 1441.7
 
-Number of Fisher Scoring iterations: 18
+Number of Fisher Scoring iterations: 4
 ```
+
+#### Calculating the odds ratio 
+The odds ratio is useful for interpreting logistic regressions of discrete variables. In this case, the odds ratio gives a quantification of how many times more likely the gene is to have p53-regulated speckle association if it has two (numPeaks2 above) or three neighboring p53 peaks (numPeaks3 above) as compared to one neighboring p53 peak. 
+
+Genes with p53-regulated speckle association are 2.97x more likely to have three p53 peaks within 200kb as compared to one p53 peak.  
+
+
+
 ##### Subset of factors
 ```
 mylogit <- glm(associated ~ peaks1to10 + concDMSO, data = b, family = "binomial")
