@@ -16,4 +16,3 @@ The following python script extracts the genes from the gene list "genesIncreasi
 USAGE: python getGenesWithinDistance.py TSS peaks genes distance > outFile
 python getGenesWithinDistance.py hg19_TSS.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed genesIncreasingRNAWithNutlin.txt 200000 > genesIncreasingRNAWithNutlin_within200kb.txt
 ```
-"genesIncreasingRNAWithNutlin_within200kb.txt" is the list of genes in IMR90 cells that increase with Nutlin treatment and are within 200kb of a p53 ChIP-seq peak.
