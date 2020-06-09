@@ -12,5 +12,6 @@ Overlap of genes (shown using [Venny](https://bioinfogp.cnb.csic.es/tools/venny/
 
 ## Get genes within 200kb of a p53 peak
 ```
-
+USAGE: python getGenesWithinDistance.py TSS peaks genes distance > outFile
+python getGenesWithinDistance.py hg19_TSS.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed  200000 > outFile
 ```
