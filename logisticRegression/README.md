@@ -72,7 +72,7 @@ Number of Fisher Scoring iterations: 4
 ```
 
 #### Calculating the odds ratio 
-The odds ratio is useful for interpreting the degree to which a discrete variable predicts p53-induced speckle association. In this case, the odds ratio is odds of p53-induced speckle association if a gene has two neighboring p53 peaks compared to the odds of speckle association if the gene just has one neighboring p53 peak. Of note, the odds ratio compares only two conditions at once, so we would look at the odds ratio for three nearby peaks versus one nearby peak, or two peaks versus one peak.  
+The odds ratio is useful for interpreting the degree to which a discrete variable predicts p53-induced speckle association. In this case, the odds ratio is odds of p53-induced speckle association if a gene has two neighboring p53 peaks compared to the odds of speckle association if the gene just has one neighboring p53 peak. Of note, the odds ratio compares only two conditions at once, so we would look at the odds ratio for three peaks versus one peak, or two peaks versus one peak.  
   
 The above logistic regression gives us the coefficients of two p53 peaks versus one p53 peak ("numPeaks2"; 0.5058) and of three p53 peaks versus one p53 peak ("numPeaks3"; 1.0909). 
 
