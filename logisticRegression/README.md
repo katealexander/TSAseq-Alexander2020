@@ -77,44 +77,6 @@ The odds ratio is useful for interpreting the degree to which a discrete variabl
 The above logistic regression gives us the coefficients of two p53 peaks versus one p53 peak ("numPeaks2"; 0.5058) and of three p53 peaks versus one p53 peak ("numPeaks3"; 1.0909). 
 
 
-
-##### Subset of factors
-```
-mylogit <- glm(associated ~ peaks1to10 + concDMSO, data = b, family = "binomial")
-```
-##### Results from subset of factors
-```
-summary(mylogit)
-
-Call:
-glm(formula = associated ~ peaks1to10 + concDMSO, family = "binomial", 
-    data = b)
-
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--2.61096  -0.08734  -0.00243   0.00000   2.72567  
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept) -39.6969     3.5794 -11.090   <2e-16 ***
-peaks1to102   0.8387     0.3653   2.296   0.0217 *  
-peaks1to103   1.0899     0.6727   1.620   0.1052    
-peaks1to104  -5.2521     2.3215  -2.262   0.0237 *  
-peaks1to105  13.3072   882.7434   0.015   0.9880    
-concDMSO      3.4130     0.3122  10.933   <2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 914.84  on 1305  degrees of freedom
-Residual deviance: 297.02  on 1300  degrees of freedom
-AIC: 309.02
-
-Number of Fisher Scoring iterations: 13
-
-```
-
 ### Probability prediction
 ```
 newdata2 <- with(b, data.frame(concDMSO = rep(seq(from = 9, to = 14, length.out = 100), 3), peaks1to10 = factor(rep(1:3, each = 100))))
