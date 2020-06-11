@@ -40,11 +40,11 @@ b$numPeaks <- as.factor(b$numPeaks)
 ```
 
 ### Logistic model
-##### HiC subcompartment logistic regression
+##### Number of p53 peaks logistic regression (discrete variable)
 ```
 mylogit <- glm(associated ~ numPeaks, data = b, family = "binomial")
 ```
-##### Results HiC subcompartment logistic regression
+##### Results for number of p53 peaks logistic regression (discrete variable)
 ```
 summary(mylogit)
 Call:
@@ -72,9 +72,9 @@ Number of Fisher Scoring iterations: 4
 ```
 
 #### Calculating the odds ratio 
-The odds ratio is useful for interpreting logistic regressions of discrete variables. In this case, the odds ratio gives a quantification of how many times more likely the gene is to have p53-regulated speckle association if it has two (numPeaks2 above) or three neighboring p53 peaks (numPeaks3 above) as compared to one neighboring p53 peak. 
-
-Genes with p53-regulated speckle association are 2.97x more likely to have three p53 peaks within 200kb as compared to one p53 peak.  
+The odds ratio is useful for interpreting the degree to which a discrete variable predicts p53-induced speckle association. In this case, the odds ratio is odds of p53-induced speckle association if a gene has two neighboring p53 peaks compared to the odds of speckle association if the gene just has one neighboring p53 peak. Of note, the odds ratio compares only two conditions at once, so we would look at the odds ratio for three nearby peaks versus one nearby peak, or two peaks versus one peak.  
+  
+The above logistic regression gives us the coefficients of two p53 peaks versus one p53 peak ("numPeaks2"; 0.5058) and of three p53 peaks versus one p53 peak ("numPeaks3"; 1.0909). 
 
 
 
