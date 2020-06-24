@@ -7,10 +7,11 @@ In logistic regressions, you can make a model using the combination of several i
 The variables of interest can be continuous (i.e. SON concentration at baseline) or discrete (i.e. gene dense versus gene sparse). I chose SON concentration at baseline, gene density, HiC subcompartment, and number of neighboring p53 peaks based on my experimental observations. However, additional or other variables can also be examined. Co-linearity should be explored by investigating the relationship between each pair of variables.
 
 ## Data used in this analysis
-### p53 peaks
-### Gene Density
-### HiC Subcompartments
-### SON concentration at baseline
+#### p53 peaks
+
+#### Gene Density
+#### HiC Subcompartments
+#### SON concentration at baseline
 
 ## Setting up the data
 Get all of the variables into a table where each row is a gene, and each column is a variable of interest. Speckle association should be 0 for not associated and 1 for associated. Categorical variables should be numbered 1-n. For example, HiC subcompartments are: 1=A1, 2=A2, 3=B1, 4=B2 5=B3.  
