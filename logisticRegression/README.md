@@ -8,9 +8,11 @@ The variables of interest can be continuous (i.e. SON concentration at baseline)
 
 ## Data used in this analysis
 #### p53 peaks
-
+p53 peaks (GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed) were obtained from a previously published dataset, [GSE58740](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58740).
 #### Gene Density
+Genomic regions were defined as gene dense or gene sparse based on whether there were greater or fewer than 26 genes/Mb (two standard deviations above the genome-wide mean density) as calculated using a 1Mb sliding window across the genome.
 #### HiC Subcompartments
+HiC subcompartments (A1, A2, B1, B2, B3, B4) are calculated based on mapping of chromatin-chromatin pairwise interactions from HiC data. The A compartment interacts more with other A-compartment DNA than with B-compartment DNA. Likewise, the A compartment is segregated into A1 and A2 subcompartments that tend to interact within themselves moreso than with one another. HiC subcompartments were originally designated in 2014 by [Suhas Rao, Erez Lieberman Aiden, and colleagues](https://www.sciencedirect.com/science/article/pii/S0092867414014974). Subsequently, similar compartmentalization has been imputed from HiC data using methods called [SNIPER](https://www.nature.com/articles/s41467-019-12954-4), and [SCI](https://www.nature.com/articles/s41467-020-14974-x). For this analysis, I used HiC subcompartments imputed in IMR90 cells (
 #### SON concentration at baseline
 
 ## Setting up the data
