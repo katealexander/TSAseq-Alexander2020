@@ -24,11 +24,9 @@ Get all of the variables into a table where each row is a gene, and each column 
 This is what I used to get my data formatted into a table:
 ```
 # "USAGE: python getGeneData.py genesAssociated genesNotAssociated TSSs diffBindResultsBins peakFile density HiCsubcompartments > outFile"
-
-# EXAMPLE
 python getGeneData.py IMR90_p53targs_upSONpadj0.01.txt IMR90_p53targs_nsSONpadjOver0.1.txt hg19_TSS.txt DiffBindResults_100kb5.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed geneDensity.bed IMR90_track_hg19_HiCsubcompartments.bed > geneData_with100kbBin5_padj0.01.txt
 ```
-"IMR90_p53targs_upSONpadj0.01.txt" and "IMR90_p53targs_nsSONpadjOver0.1.txt" are lists of the IMR90 p53 targets that increase or do not increase speckle association obtained from [sliding window DiffBind analysis of SON TSA-seq data]()
+"IMR90_p53targs_upSONpadj0.01.txt" and "IMR90_p53targs_nsSONpadjOver0.1.txt" are lists of the IMR90 p53 targets that increase or do not increase speckle association obtained from [sliding window DiffBind analysis of SON TSA-seq data](https://github.com/katealexander/TSAseq-Alexander2020/tree/master/genomicBins_DiffBind)
 
 ## Create logistic model in R
 I followed instructions from this [tutorial](https://stats.idre.ucla.edu/r/dae/logit-regression/) and this [tutorial](https://stats.idre.ucla.edu/r/dae/logit-regression/)
@@ -86,12 +84,14 @@ Number of Fisher Scoring iterations: 4
 #### Calculating the odds ratio 
 The odds ratio is useful for interpreting the degree to which a discrete variable predicts p53-induced speckle association. In this case, the odds ratio is odds of p53-induced speckle association if a gene has two neighboring p53 peaks compared to the odds of speckle association if the gene just has one neighboring p53 peak. Of note, the odds ratio compares only two conditions at once, so we would look at the odds ratio for three peaks versus one peak, or two peaks versus one peak.  
   
-The above logistic regression gives us the coefficients of two p53 peaks versus one p53 peak ("numPeaks2"; 0.5058) and of three p53 peaks versus one p53 peak ("numPeaks3"; 1.0909). 
+The above logistic regression gives us the coefficients of two p53 peaks versus one p53 peak ("numPeaks2"; 0.5058) and of three p53 peaks versus one p53 peak ("numPeaks3"; 1.0909). From here, the odds-ration is e^coefficient (e^0.5058 = 1.66 odds ratio for 2 peaks over 1 peak; e^1.0909 = 3 odds ratio for 3 peaks over 1 peak). 
 
 
 ### Probability prediction
+For continuous varaibles, such as the baseline SON concentration ("concDMSO" below), logistic regressions can be visuallized as a graph of prediction probabilities versus the continuous variable. 
 ```
-newdata2 <- with(b, data.frame(concDMSO = rep(seq(from = 9, to = 14, length.out = 100), 3), peaks1to10 = factor(rep(1:3, each = 100))))
+mylogit <- glm(associated ~ concDMSO, data = b, family = "binomial")
+newdata2 <- with(b, data.frame(concDMSO = rep(seq(from = 9, to = 14, length.out = 100), 3)))
 newdata3 <- cbind(newdata2, predict(mylogit, newdata = newdata2, type = "link", se = TRUE))
 newdata3 <- within(newdata3, {
 + PredictedProb <- plogis(fit)
@@ -99,8 +99,8 @@ newdata3 <- within(newdata3, {
 + UL <- plogis(fit + (1.96 * se.fit))
 + })
 ```
-### Plot
+### Plot probability prediction
 ```
 library(ggplot2)
-ggplot(newdata3, aes(x = concDMSO, y = PredictedProb)) + geom_ribbon(aes(ymin = LL, ymax = UL, fill = peaks1to10), alpha = 0.2) + geom_line(aes(colour = peaks1to10), size = 1) + theme_classic()
+ggplot(newdata3, aes(x = concDMSO, y = PredictedProb)) + geom_ribbon(aes(ymin = LL, ymax = UL), alpha = 0.2) + geom_line(aes(size = 1) + theme_classic()
 ```
