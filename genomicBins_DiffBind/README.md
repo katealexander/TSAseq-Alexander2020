@@ -80,3 +80,11 @@ To get a list of genes whose transcription start sites fall within significant d
 python getGenesWithin.py hg19_TSS.txt significant_upNutlin_merged.bed > significant_upNutlin_merged_genes.txt
 ```
 
+# Get DiffBind counts of a list of genes or peaks
+For comparing SON TSA-seq signal to DNA-FISH measurements, it is useful to extract the normalized counts for each gene. I did this by averaging the counts tabulated by DiffBind for each of the sliding windows that overlaps the transcription start site of the gene of interest. 
+```
+USAGE: python addAverageNtileToGene.py geneList TSSs DiffBindCountsFiles  > outFile
+python addAverageCountsToGene.py DNAfishGenes.txt hg19_TSS.txt counts_50kb[1-9].txt > dnaFishGenes_50kb_counts.txt
+```
+
+
