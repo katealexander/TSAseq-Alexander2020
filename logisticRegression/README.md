@@ -16,7 +16,7 @@ HiC subcompartments (A1, A2, B1, B2, B3, B4) are calculated based on mapping of 
   
 Of note, [a study using SON TSA-seq](https://rupress.org/jcb/article/217/11/4025/120670/Mapping-3D-genome-organization-relative-to-nuclear) to map speckle association genome-wide has found that the A1 compartment is highly enriched at the speckle. Thus, it is possible that speckles are the organizing feature for the A1 subcompartment; although additional studies are required to assess causality.
 #### SON concentration at baseline
-SON concentration at baseline refers to the normalized counts from SON TSA-seq data in the DMSO-treated control. It thus represents a measure of speckle association at baseline, in the absense of p53 activation.
+SON concentration at baseline refers to the normalized counts from SON TSA-seq data in the DMSO-treated control. It thus represents a measure of speckle association at baseline, in the absense of p53 activation. This data was extracted from the DiffBindResults file. 
 
 ## Setting up the data
 Get all of the variables into a table where each row is a gene, and each column is a variable of interest. Speckle association should be 0 for not associated and 1 for associated. Categorical variables should be numbered 1-n. For example, HiC subcompartments are: 1=A1, 2=A2, 3=B1, 4=B2 5=B3.  
@@ -28,7 +28,7 @@ This is what I used to get my data formatted into a table:
 # EXAMPLE
 python getGeneData.py IMR90_p53targs_upSONpadj0.01.txt IMR90_p53targs_nsSONpadjOver0.1.txt hg19_TSS.txt DiffBindResults_100kb5.txt GSM1418970_p53_Nutlin_Peaks_hg19_FDR1.bed geneDensity.bed IMR90_track_hg19_HiCsubcompartments.bed > geneData_with100kbBin5_padj0.01.txt
 ```
-"IMR90_p53targs_upSONpadj0.01.txt" and "IMR90_p53targs_nsSONpadjOver0.1.txt" are lists of the IMR90 p53 targets that increase or do not increase speckle association obtained from 
+"IMR90_p53targs_upSONpadj0.01.txt" and "IMR90_p53targs_nsSONpadjOver0.1.txt" are lists of the IMR90 p53 targets that increase or do not increase speckle association obtained from [sliding window DiffBind analysis of SON TSA-seq data]()
 
 ## Create logistic model in R
 I followed instructions from this [tutorial](https://stats.idre.ucla.edu/r/dae/logit-regression/) and this [tutorial](https://stats.idre.ucla.edu/r/dae/logit-regression/)
