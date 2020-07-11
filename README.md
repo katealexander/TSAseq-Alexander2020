@@ -19,6 +19,6 @@ genomicBins_DiffBind uses Python to split the genome into user-specified bin siz
 ### IMR90_p53targets
 IMR90_p53targets explains how IMR90 p53 targets were defined for the purpose of this analysis, and uses Python to obtain genes within 200kb of a p53 peak.
 ### logisticRegression
-logisticRegression demonstrates how to use glm in R to perform logistic regression for variables that predict changes in speckle assoicaiton of p53 target genes: gene density, number of p53 binding peaks, HiC subcompartment, and baseline speckle association.
+logisticRegression demonstrates how to use glm in R to perform logistic regression for variables that predict changes in speckle association of p53 target genes: gene density, number of p53 binding peaks, HiC subcompartment, and baseline speckle association.
 ### clusterProfiler
 clusterProfiler shows how the R package, clusterProfiler, was used to compare gene ontology (GO) and KEGG pathways of IMR90 p53 targets that do or do not increase speckle association upon p53 activation.
