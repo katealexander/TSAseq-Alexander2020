@@ -39,7 +39,7 @@ dotplot(Y, showCategory = 20)
 ```
 #### run functional pathway analysis (KEGG)
 ```
-x=compareCluster(geneList, fun = "enrichKEGG", OrgDb = org.Hs.eg.db)
+x=compareCluster(geneList, fun = "enrichKEGG")
 ```
 #### plot KEGG
 ```
