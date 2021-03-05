@@ -1,5 +1,5 @@
-# TSAseq-Alexander2020
-This pipeline was used for differential analysis of SON TSA-seq data upon p53 activation (Alexander 2020). It supplements available tools for assessing changes in speckle association of chromatin ([TSA-seq 2.0](https://github.com/lgchang27/TSA-Seq-2020) and [original](https://github.com/zocean/Norma) from [analysis of several cell lines](https://www.biorxiv.org/content/10.1101/824433v2) or [K562 cells](https://doi.org/10.1083/jcb.201807108)). It differs from these analysis methods in that it utilizes the DiffBind R package to assess changes over multiple window sizes.
+# TSAseq-Alexander2021
+This pipeline was used for differential analysis of SON TSA-seq data upon p53 activation (Alexander 2021). It supplements available tools for assessing changes in speckle association of chromatin ([TSA-seq 2.0](https://github.com/lgchang27/TSA-Seq-2020) and [original](https://github.com/zocean/Norma) from [analysis of several cell lines](https://www.biorxiv.org/content/10.1101/824433v2) or [K562 cells](https://doi.org/10.1083/jcb.201807108)). It differs from these analysis methods in that it utilizes the DiffBind R package to assess changes over multiple window sizes.
 
 # Requirements
 R packages: [DiffBind](https://bioconductor.org/packages/release/bioc/html/DiffBind.html), [clusterProfiler](https://bioconductor.org/packages/release/bioc/html/clusterProfiler.html)  
