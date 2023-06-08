@@ -25,3 +25,5 @@ logisticRegression demonstrates how to use glm in R to perform logistic regressi
 ### clusterProfiler
 clusterProfiler shows how the R package, clusterProfiler, was used to compare gene ontology (GO) and KEGG pathways of IMR90 p53 targets that do or do not increase speckle association upon p53 activation.
 
+# R session info
+<img src="https://github.com/katealexander/TSAseq-Alexander2020/blob/master/images/Rsession.png" alt="drawing" width="500"/>
